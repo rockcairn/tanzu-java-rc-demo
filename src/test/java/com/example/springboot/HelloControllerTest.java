@@ -21,12 +21,12 @@ class HelloControllerTest {
 
     @Test
     void index() throws Exception {
-        assertEquals("Rockcairn: Greetings from Spring Boot + Tanzu! <ul><li><a href=\"mountain\"/></li><li><a href=\"trip\"/></li></ul>", controller.index());
+        assertEquals("Rockcairn: Greetings from Spring Boot + Tanzu! <ul><li><a href=\"mountain\">mountain</a></li><li><a href=\"trip\">trip</a></li></ul>", controller.index());
 
         mockMvc
             .perform(get("/"))
             .andExpect(status().isOk())
-            .andExpect(content().string("Rockcairn: Greetings from Spring Boot + Tanzu! <ul><li><a href=\"mountain\"/></li><li><a href=\"trip\"/></li></ul>"));
+            .andExpect(content().string("Rockcairn: Greetings from Spring Boot + Tanzu! <ul><li><a href=\"mountain\">mountain</a></li><li><a href=\"trip\">trip</a></li></ul>"));
     }
 
     @Test

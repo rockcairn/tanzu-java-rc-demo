@@ -21,11 +21,32 @@ class HelloControllerTest {
 
     @Test
     void index() throws Exception {
-        assertEquals("Rockcairn: Greetings from Spring Boot + Tanzu!", controller.index());
+        assertEquals("Rockcairn: Greetings from Spring Boot + Tanzu! <ul><li><a href=\"mountain\"/></li><li><a href=\"trip\"/></li></ul>", controller.index());
 
         mockMvc
             .perform(get("/"))
             .andExpect(status().isOk())
-            .andExpect(content().string("Rockcairn: Greetings from Spring Boot + Tanzu!"));
+            .andExpect(content().string("Rockcairn: Greetings from Spring Boot + Tanzu! <ul><li><a href=\"mountain\"/></li><li><a href=\"trip\"/></li></ul>"));
+    }
+
+    @Test
+    void mountain() throws Exception {
+        assertEquals("Rockcairn: Capital Peak!", controller.mountain());
+
+        mockMvc
+                .perform(get("/mountain"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Rockcairn: Capital Peak!"));
+    }
+
+
+    @Test
+    void trip() throws Exception {
+        assertEquals("Rockcairn: Alaska!", controller.trip());
+
+        mockMvc
+                .perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Rockcairn: Alaska!"));
     }
 }
